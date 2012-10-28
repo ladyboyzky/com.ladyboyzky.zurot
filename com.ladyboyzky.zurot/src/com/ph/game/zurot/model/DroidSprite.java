@@ -9,7 +9,7 @@ import android.graphics.Canvas;
  *
  */
 public abstract class DroidSprite {
-	protected Bitmap bitmap; // the actual bitmap
+	protected Bitmap bitmap; // the actual bitmapi
 	protected int x; // the X coordinate
 	protected int y; // the Y coordinate
 	protected boolean touched; // if droid is touched/picked up
