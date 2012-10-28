@@ -1,6 +1,6 @@
 package com.ph.game.zurot.model;
 
-import android.graphics.Bitmap;
+import android.graphics.Bitmap; 
 import android.graphics.Matrix;
 
 /**
