@@ -1,44 +1,64 @@
 package com.ph.game.zurot.model;
 
-import android.graphics.Bitmap; 
-import android.graphics.Matrix;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.graphics.Canvas;
 
 /**
  * 
  * @author hackmel
- *
+ * @version 1.0
+ * Date: 28-10-2012
+ * This class represents the Zurot Object. The hero of the game.
  */
-public class Zurot extends DroidSprite{
+public class Zurot{
 
+    /**
+     * Will contain the head and the tails of the Zurot object
+     */
+	private List<ZurotTail> tail =new ArrayList<ZurotTail>();
 
-	public Zurot(Bitmap bitmap, int x, int y,int newWidth,int newHeight) {
-		super(bitmap, x, y);
-		
-		int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-		Matrix matrix = new Matrix();
-        // RESIZE THE BIT MAP
-        matrix.postScale(scaleWidth, scaleHeight);
-        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,width, height, matrix, false);
-        this.bitmap=resizedBitmap;
-
+	/**
+	 * 
+	 * @return the list of head and tails
+	 */
+	public List<ZurotTail> getTail() {
+		return tail;
 	}
 
-	public void handleActionDown(int eventX, int eventY) {
-		if (eventX >= (x - bitmap.getWidth() / 2)
-				&& (eventX <= (x + bitmap.getWidth() / 2))) {
-			if (eventY >= (y - bitmap.getHeight() / 2)
-					&& (y <= (y + bitmap.getHeight() / 2))) {
-				// droid touched
-				setTouched(true);
-			} else {
-				setTouched(false);
-			}
-		} else {
-			setTouched(false);
+
+	/**
+	 * 
+	 * @param tail
+	 * Sets the list of head and tails 
+	 */
+	public void setTail(List<ZurotTail> tail) {
+		this.tail = tail;
+	}
+
+
+	/**
+	 * 
+	 * @param tail
+	 * Add a new object of ZurotTail.
+	 * This object represents the tail
+	 */
+	public void addTail(ZurotTail tail){
+		this.tail.add(tail);
+	}
+	
+	/**
+	 * 
+	 * @param canvas
+	 * Draw the Zurot object on the canvas
+	 */
+	public void drawZurot(Canvas canvas){
+		for(ZurotTail zurotObj:tail){
+			zurotObj.draw(canvas);
+		    zurotObj.draw(canvas);
+		    zurotObj.draw(canvas);
 		}
-
 	}
+	
 }
